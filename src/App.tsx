@@ -2,11 +2,11 @@
 import { MainComponent } from "./components/MainComponent";
 
 function App(): JSX.Element {
- return (
-   <>
-    <MainComponent />
-   </>
- )
+  return (
+    <>
+      <MainComponent />
+    </>
+  );
 }
 
 export default App;
