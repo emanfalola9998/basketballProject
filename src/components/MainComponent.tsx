@@ -87,12 +87,9 @@ export function MainComponent(): JSX.Element {
       ))}
       {teamInfo.id !== 0 && (
         <ul className="list-group">
-          <li className="list-group-item">{teamInfo.abbreviation}</li>
-          <li className="list-group-item">{teamInfo.city}</li>
-          <li className="list-group-item">{teamInfo.conference}</li>
-          <li className="list-group-item">{teamInfo.division}</li>
-          <li className="list-group-item">{teamInfo.full_name}</li>
-          <li className="list-group-item">{teamInfo.name}</li>
+          <li className="list-group-item">Team Name: <b>{teamInfo.full_name}</b></li>
+          <li className="list-group-item">Conference: <b>{teamInfo.conference}</b></li>
+          <li className="list-group-item">Division: <b> {teamInfo.division}</b></li>
         </ul>
       )}
       <br />
