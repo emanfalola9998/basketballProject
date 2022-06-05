@@ -48,11 +48,13 @@ export function MainComponent(): JSX.Element {
 
   useEffect(() => {
     async function getPlayers() {
-      const response = await axios.get(apiLink + "players/");
+      const response = await axios.get(
+        apiLink + `players/?search=${searchTerm}`
+      );
       getAllPlayers(response.data.data);
     }
     getPlayers();
-  }, []);
+  }, [searchTerm]);
 
   const filteredPlayerNames = isSearchTerminPlayers(allPlayers, searchTerm);
 
