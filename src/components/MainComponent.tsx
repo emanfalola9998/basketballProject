@@ -3,6 +3,8 @@ import axios from "axios";
 import { getTeamsInterface } from "../utils/types";
 import { getTeamInfoInterface } from "../utils/types";
 import { getPlayersInterface } from "../utils/types";
+import logo from "../images/kobe.jpg"
+
 
 export function MainComponent(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -56,6 +58,9 @@ export function MainComponent(): JSX.Element {
     getPlayers();
   }, [searchTerm]);
 
+  
+  
+ 
   const filteredPlayerNames = isSearchTerminPlayers(allPlayers, searchTerm);
 
   function isSearchTerminPlayers(
@@ -70,10 +75,15 @@ export function MainComponent(): JSX.Element {
 
     return playerSearch;
   }
+  const sortedPlayerNames = filteredPlayerNames.sort((a, b) =>
+  a.last_name.toLowerCase() > b.last_name.toLowerCase() ? 1 : -1
+);
 
   return (
-    <>
+    <div className="text-bg-dark p-3">
       <h3> Welcome to the NBA </h3>
+      <img src={logo} alt='NBA logo' width={200}/>
+      <br />
 
       {getTeams.map((team) => (
         <button
@@ -123,7 +133,7 @@ export function MainComponent(): JSX.Element {
         />
         Displaying {filteredPlayerNames.length} out of {allPlayers.length}
       </div>
-      {filteredPlayerNames.map((player) => (
+      {sortedPlayerNames.map((player) => (
         <button
           type="button"
           className="btn btn-success"
@@ -186,6 +196,6 @@ export function MainComponent(): JSX.Element {
       >
         Reset
       </button>
-    </>
+    </div>
   );
 }
