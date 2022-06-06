@@ -4,6 +4,7 @@ import { getTeamsInterface } from "../utils/types";
 import { getTeamInfoInterface } from "../utils/types";
 import { getPlayersInterface } from "../utils/types";
 import logo from "../images/kobe.jpg";
+import PostSeason from "./PostSeason";
 
 export function MainComponent(): JSX.Element {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -50,7 +51,7 @@ export function MainComponent(): JSX.Element {
   useEffect(() => {
     async function getPlayers() {
       const response = await axios.get(
-        apiLink + `players/?search=${searchTerm}`
+        apiLink + `players?per_page=25&search=${searchTerm}`
       );
       getAllPlayers(response.data.data);
     }
@@ -192,6 +193,7 @@ export function MainComponent(): JSX.Element {
       >
         Reset
       </button>
+      <PostSeason />
     </div>
   );
 }

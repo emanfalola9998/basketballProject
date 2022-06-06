@@ -36,3 +36,33 @@ export interface getTeamInfoInterface {
   full_name: string;
   name: string;
 }
+
+export interface getPostSeasonInterface {
+  id: number;
+  date: string;
+  home_team_score: number;
+  visitor_team_score: number;
+  season: 2018;
+  period: 4;
+  status: "Final";
+  time: string;
+  postseason: false;
+  home_team: {
+    id: 2;
+    abbreviation: "BOS";
+    city: string;
+    conference: string;
+    division: string;
+    full_name: string;
+    name: string;
+  };
+  visitor_team: {
+    id: number;
+    abbreviation: string;
+    city: string;
+    conference: string;
+    division: string;
+    full_name: string;
+    name: string;
+  };
+}
