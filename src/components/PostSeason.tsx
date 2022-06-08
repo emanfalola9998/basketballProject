@@ -43,33 +43,31 @@ export default function PostSeason(): JSX.Element {
   const apiLink = "https://balldontlie.io/api/v1/";
   useEffect(() => {
     async function getPostSeasonallGames() {
-        try {
-            const response = await axios.get(
-              apiLink + `games?start_date=${date}&postseason=true`
-            );
-            setallGames(response.data.data);
-            
-        } catch (error) {
-            console.error(error)      
-        }
+      try {
+        const response = await axios.get(
+          apiLink + `games?start_date=${date}&postseason=true`
+        );
+        setallGames(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getPostSeasonallGames();
   }, [date]);
 
   useEffect(() => {
     async function getAllGamesForSpecificTeam() {
-        try {
-            const response = await axios.get(
-              apiLink +
-                `games?seasons[]=${postSeasonDate}&seasons[]=${
-                  postSeasonDate - 1
-                }&team_ids[]=${teamID}&postseason=true`
-            );
-            setSpecificTeam(response.data.data);
-            
-        } catch (error) {
-            console.error(error)     
-        }
+      try {
+        const response = await axios.get(
+          apiLink +
+            `games?seasons[]=${postSeasonDate}&seasons[]=${
+              postSeasonDate - 1
+            }&team_ids[]=${teamID}&postseason=true`
+        );
+        setSpecificTeam(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getAllGamesForSpecificTeam();
   }, [teamID, postSeasonDate]);
@@ -84,12 +82,11 @@ export default function PostSeason(): JSX.Element {
         placeholder="YYYY-MM-DD"
         value={date}
       />
-            {allGames.map((game:getPostSeasonInterface) => (
-                <button key={game.id} onClick={() => setGame(game)}>
-                {game.home_team.city}
-                </button> 
-            ))}
-        
+      {allGames.map((game: getPostSeasonInterface) => (
+        <button key={game.id} onClick={() => setGame(game)}>
+          {game.home_team.city}
+        </button>
+      ))}
 
       {game.id !== 0 && (
         <ul>
