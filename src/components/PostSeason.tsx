@@ -5,7 +5,7 @@ import { getPostSeasonInterface } from "../utils/types";
 export default function PostSeason(): JSX.Element {
   const [allGames, setallGames] = useState<getPostSeasonInterface[]>([]);
   const [game, setGame] = useState<getPostSeasonInterface>({
-    id: 1,
+    id: 0,
     date: "2018-10-16T00:00:00.000Z",
     home_team_score: 105,
     visitor_team_score: 87,
