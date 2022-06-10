@@ -160,7 +160,7 @@ export default function PostSeason(): JSX.Element {
         <option>[11] Houston Rockets - West</option>
         <option>[12] Indiana Pacers - East</option>
         <option>[13] LA Clippers - West</option>
-        <option>[14] La Lakers - West</option>
+        <option>[14] LA Lakers - West</option>
         <option>[15] Memphis Grizzlies - West </option>
         <option>[16] Miami Heat - East</option>
         <option>[17] Milwaukee Bucks - East</option>
