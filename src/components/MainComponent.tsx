@@ -42,18 +42,26 @@ export function MainComponent(): JSX.Element {
 
   useEffect(() => {
     async function getAllTeams() {
-      const response = await axios.get(apiLink + "teams");
-      setGetTeams(response.data.data);
+      try {
+        const response = await axios.get(apiLink + "teams");
+        setGetTeams(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getAllTeams();
   }, []);
 
   useEffect(() => {
     async function getPlayers() {
-      const response = await axios.get(
-        apiLink + `players?per_page=25&search=${searchTerm}`
-      );
-      getAllPlayers(response.data.data);
+      try {
+        const response = await axios.get(
+          apiLink + `players?per_page=25&search=${searchTerm}`
+        );
+        getAllPlayers(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getPlayers();
   }, [searchTerm]);

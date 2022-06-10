@@ -43,23 +43,31 @@ export default function PostSeason(): JSX.Element {
   const apiLink = "https://balldontlie.io/api/v1/";
   useEffect(() => {
     async function getPostSeasonallGames() {
-      const response = await axios.get(
-        apiLink + `games?start_date=${date}&postseason=true`
-      );
-      setallGames(response.data.data);
+      try {
+        const response = await axios.get(
+          apiLink + `games?start_date=${date}&postseason=true`
+        );
+        setallGames(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getPostSeasonallGames();
   }, [date]);
 
   useEffect(() => {
     async function getAllGamesForSpecificTeam() {
-      const response = await axios.get(
-        apiLink +
-          `games?seasons[]=${postSeasonDate}&seasons[]=${
-            postSeasonDate - 1
-          }&team_ids[]=${teamID}&postseason=true`
-      );
-      setSpecificTeam(response.data.data);
+      try {
+        const response = await axios.get(
+          apiLink +
+            `games?seasons[]=${postSeasonDate}&seasons[]=${
+              postSeasonDate - 1
+            }&team_ids[]=${teamID}&postseason=true`
+        );
+        setSpecificTeam(response.data.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
     getAllGamesForSpecificTeam();
   }, [teamID, postSeasonDate]);
@@ -74,12 +82,12 @@ export default function PostSeason(): JSX.Element {
         placeholder="YYYY-MM-DD"
         value={date}
       />
-      {allGames.map((game) => (
+      {allGames.map((game: getPostSeasonInterface) => (
         <button key={game.id} onClick={() => setGame(game)}>
           {game.home_team.city}
-          {game.date}
         </button>
       ))}
+
       {game.id !== 0 && (
         <ul>
           <li>
@@ -90,6 +98,7 @@ export default function PostSeason(): JSX.Element {
           </li>
         </ul>
       )}
+      {/* <button onClick={() => setDate("0")}>Reset Date</button> */}
       <br />
       <button
         onClick={() =>
@@ -151,7 +160,7 @@ export default function PostSeason(): JSX.Element {
         <option>[11] Houston Rockets - West</option>
         <option>[12] Indiana Pacers - East</option>
         <option>[13] LA Clippers - West</option>
-        <option>[14] La LAkers - West</option>
+        <option>[14] La Lakers - West</option>
         <option>[15] Memphis Grizzlies - West </option>
         <option>[16] Miami Heat - East</option>
         <option>[17] Milwaukee Bucks - East</option>
@@ -169,7 +178,6 @@ export default function PostSeason(): JSX.Element {
         <option>[29] Utah Jazz - West</option>
         <option>[30] Washington Wizards - East</option>
       </select>
-      {console.log(teamID)}
 
       <input
         placeholder="YYYY-YYYY"
