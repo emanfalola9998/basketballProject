@@ -39,6 +39,7 @@ export default function PostSeason(): JSX.Element {
     []
   );
   const [postSeasonDate, setPostSeasonDate] = useState(2022);
+  const [teamIDFinder, setTeamIDFinder] = useState<string>("");
 
   const apiLink = "https://balldontlie.io/api/v1/";
   useEffect(() => {
@@ -62,7 +63,7 @@ export default function PostSeason(): JSX.Element {
           apiLink +
             `games?seasons[]=${postSeasonDate}&seasons[]=${
               postSeasonDate - 1
-            }&team_ids[]=${teamID}&postseason=true`
+            }&team_ids[]=${teamIDFinder}&postseason=true`
         );
         setSpecificTeam(response.data.data);
       } catch (error) {
@@ -70,7 +71,7 @@ export default function PostSeason(): JSX.Element {
       }
     }
     getAllGamesForSpecificTeam();
-  }, [teamID, postSeasonDate]);
+  }, [teamID, postSeasonDate, teamIDFinder]);
 
   return (
     <div>
@@ -138,12 +139,13 @@ export default function PostSeason(): JSX.Element {
       <br />
       <select
         onChange={(e) => {
+          setTeamID(e.target.value);
           const target = e.target.value.split("");
           const index = target.indexOf("]");
           target.splice(index, target.length);
           target.shift();
           const targetText = target.join("");
-          setTeamID(targetText);
+          setTeamIDFinder(targetText);
         }}
         value={teamID}
       >
@@ -193,6 +195,8 @@ export default function PostSeason(): JSX.Element {
           </li>
         </ul>
       ))}
+      {console.log(specificTeam)}
+      {specificTeam.length < 1 && <p>{teamID} did not make the playoffs</p>}
     </div>
   );
 }
