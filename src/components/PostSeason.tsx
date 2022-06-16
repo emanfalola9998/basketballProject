@@ -195,8 +195,9 @@ export default function PostSeason(): JSX.Element {
           </li>
         </ul>
       ))}
-      {console.log(specificTeam)}
-      {specificTeam.length < 1 && <p>{teamID} did not make the playoffs</p>}
+      {teamID.length && specificTeam.length === 0 &&  <p>{teamID} did not make the playoffs</p>}
+        
+        
     </div>
   );
 }
