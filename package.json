@@ -20,8 +20,8 @@
     "type-check": "tsc --noEmit",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
-    "start": "react-scripts start",
-    "build": "react-scripts build"
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build"
   },
   "browserslist": {
     "production": [
@@ -48,6 +48,7 @@
     "@typescript-eslint/parser": "^4.26.1",
     "eslint": "^7.28.0",
     "eslint-plugin-react": "^7.24.0",
-    "prettier": "2.3.1"
+    "prettier": "2.3.1",
+    "tailwindcss": "^3.4.0"
   }
 }
