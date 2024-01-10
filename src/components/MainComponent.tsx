@@ -41,7 +41,7 @@ export function MainComponent(): JSX.Element {
     },
   });
 
-  const apiLink = "http://localhost:3001/api/";
+  const apiLink = "https://basketballbackend.onrender.com/api/";
 
   // useEffect used to gain team names and info from the API, empty dependency variable so will only render once when the App is initially ran
   useEffect(() => {

@@ -41,7 +41,7 @@ export default function PostSeason(): JSX.Element {
   const [postSeasonDate, setPostSeasonDate] = useState(2022);
   const [teamIDFinder, setTeamIDFinder] = useState<string>("");
 
-  const apiLink = "http://localhost:3001/api/";
+  const apiLink = "https://basketballbackend.onrender.com/api/teams/";
   useEffect(() => {
     async function getPostSeasonallGames() {
       try {
